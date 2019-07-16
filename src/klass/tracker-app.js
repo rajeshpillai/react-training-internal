@@ -17,6 +17,9 @@ export default class TrackerApp extends React.Component {
     console.log(id, e);
     if (e.which == 13) {
       this.props.onTaskUpdate({ id: id, title: e.target.value});
+    } else if (e.which == 27) {  // ESC
+      alert('cancel');
+      this.props.onToggleEdit(id);
     }
   }
 
@@ -61,7 +64,7 @@ export default class TrackerApp extends React.Component {
                   {!t.edit && t.title}
                   {t.edit &&
                     <input defaultValue={t.title} 
-                      onKeyPress={this.onTitleChange.bind(null,t.id)}
+                      onKeyDown={this.onTitleChange.bind(null,t.id)}
                       onChange={this.onTitleChange.bind(null,t.id)}></input>
                   }
                   
