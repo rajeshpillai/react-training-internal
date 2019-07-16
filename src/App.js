@@ -93,9 +93,11 @@ class App extends React.Component {
           </nav>
           <Route exact path="/" render={routeProps => (
             <div className="app">
+              Where are you from?
               <AutoComplete
                 onItemSelected={this.onCountrySelected}
                 data={countries} />
+              <hr />
               <TrackerApp {...routeProps}
                 onTaskDelete={this.onTaskDelete}
                 onToggleEdit={this.onToggleEdit}
