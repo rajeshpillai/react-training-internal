@@ -6,9 +6,18 @@ export default class TrackerApp extends React.Component {
     this.inputTitle = React.createRef();
     this.toggleTaskForm = this.toggleTaskForm.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onTitleChange = this.onTitleChange.bind(this);
   }
   state = {
     showTaskForm: false,
+    currentTask: {},
+  }
+
+  onTitleChange(id, e) {
+    console.log(id, e);
+    if (e.which == 13) {
+      this.props.onTaskUpdate({ id: id, title: e.target.value});
+    }
   }
 
   toggleTaskForm() {
@@ -51,7 +60,9 @@ export default class TrackerApp extends React.Component {
                   
                   {!t.edit && t.title}
                   {t.edit &&
-                    <input value={t.title}></input>
+                    <input defaultValue={t.title} 
+                      onKeyPress={this.onTitleChange.bind(null,t.id)}
+                      onChange={this.onTitleChange.bind(null,t.id)}></input>
                   }
                   
                   <button onClick={onToggleEdit.bind(null, t.id)}>edit</button>
