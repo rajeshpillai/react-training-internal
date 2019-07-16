@@ -1,8 +1,10 @@
 import React from 'react';
 import './App.css';
 import TrackerApp from './klass/tracker-app';
-import ThemeProvider from './context/context-provider';
+import AboutUs from './components/aboutus';
 
+import ThemeProvider from './context/context-provider';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends React.Component {
   state = {
@@ -10,7 +12,6 @@ class App extends React.Component {
       { id: 1, title: "Task 1", completed: true, edit: false },
       { id: 2, title: "Task 2", completed: false, edit: false },
       { id: 3, title: "Task 3", completed: false, edit: false },
-
     ]
   }
 
@@ -76,18 +77,28 @@ class App extends React.Component {
   }
 
 
-
   render() {
     return (
-      <ThemeProvider>
-        <div className="app">
-          <TrackerApp
-            onTaskDelete={this.onTaskDelete}
-            onToggleEdit={this.onToggleEdit}
-            onTaskUpdate={this.onTaskUpdate}
-            onTaskAdd={this.onTaskAdd} tasks={this.state.tasks} />
-        </div>
-      </ThemeProvider>
+      <Router>
+        <ThemeProvider>
+          <nav class="top-nav">
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+          </nav>
+          <Route exact path="/" render={routeProps => (
+            <div className="app">
+              <TrackerApp {...routeProps}
+                onTaskDelete={this.onTaskDelete}
+                onToggleEdit={this.onToggleEdit}
+                onTaskUpdate={this.onTaskUpdate}
+                onTaskAdd={this.onTaskAdd} tasks={this.state.tasks} />
+            </div>
+          )} />
+
+          <Route path="/about/" exact component={AboutUs} />
+
+        </ThemeProvider>
+      </Router>
     );
   }
 }
