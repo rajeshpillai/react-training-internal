@@ -1,4 +1,5 @@
 import React from 'react';
+import TaskForm from './task-form';
 
 export default class TrackerApp extends React.Component {
   constructor() {
@@ -53,12 +54,9 @@ export default class TrackerApp extends React.Component {
         </h2>
 
         {this.state.showTaskForm &&
-          <form className="task-form" onSubmit={this.onSubmit}>
-            <h3>NEW TASK</h3>
-            <label for="title">Title</label>
-            <input id="title" type="text" ref={this.inputTitle} />
-            <button className="btn primary" type="submit">SUBMIT</button>
-          </form>
+          <div>
+            <TaskForm ref={this.inputTitle} onSubmit={this.onSubmit} />
+          </div>
         }
         <ol>
           {
