@@ -1,26 +1,60 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TrackerApp from './klass/tracker-app';
+class App extends React.Component {
+  state = {
+    tasks: [
+      { id: 1, title: "Task 1", completed: true },
+      { id: 2, title: "Task 2", completed: false },
+      { id: 3, title: "Task 3", completed: false },
+      
+    ]
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  constructor() {
+    super();
+    this.onTaskAdd = this.onTaskAdd.bind(this);
+    this.onTaskDelete = this.onTaskDelete.bind(this);
+  }
+
+  onTaskAdd(title) {
+    let newTask = {
+      id: +new Date(),
+      title,
+      completed: false
+    }
+    let tasks = this.state.tasks;
+    this.setState({
+      tasks: [
+        newTask,
+        ...tasks
+      ]
+    })
+  }
+
+  onTaskDelete(id, e) {
+    let tasks = this.state.tasks.filter((t) => {
+      return (t.id !== id);
+    });
+
+    this.setState({
+      tasks
+    })
+  }
+
+
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <TrackerApp
+            onTaskDelete ={this.onTaskDelete}
+            onTaskAdd={this.onTaskAdd} tasks={this.state.tasks} />
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
