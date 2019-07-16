@@ -31,10 +31,10 @@ export default function AutoComplete(props) {
   return (
     <div>
       <input ref={inputRef} onChange={onChange} type="text" placeholder="country name" />
-      {(filtered && filtered.length) > 0 && <ul className="autocomplete">
+      {(filtered && filtered.length) > 0 && <ul role="select" className="autocomplete">
         {filtered.map((f) => {
           return (
-            <li key={f}><a onClick={() => onSelect(f)} href="#">{f}</a></li>
+            <li key={f}><button onClick={() => onSelect(f)} href="#">{f}</button></li>
           )
         })}
       </ul>}
