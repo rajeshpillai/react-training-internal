@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import TrackerApp from './klass/tracker-app';
 import AboutUs from './components/aboutus';
-
+import AutoComplete from './components/autocomplete';
 import ThemeProvider from './context/context-provider';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import countries from './data/countries';
 
 class App extends React.Component {
   state = {
@@ -21,6 +22,7 @@ class App extends React.Component {
     this.onTaskDelete = this.onTaskDelete.bind(this);
     this.onToggleEdit = this.onToggleEdit.bind(this);
     this.onTaskUpdate = this.onTaskUpdate.bind(this);
+    this.onCountrySelected = this.onCountrySelected.bind(this);
   }
 
 
@@ -76,6 +78,10 @@ class App extends React.Component {
     })
   }
 
+  onCountrySelected(country) {
+    console.log(`Selected country is ${country}`);
+  }
+
 
   render() {
     return (
@@ -87,6 +93,9 @@ class App extends React.Component {
           </nav>
           <Route exact path="/" render={routeProps => (
             <div className="app">
+              <AutoComplete
+                onItemSelected={this.onCountrySelected}
+                data={countries} />
               <TrackerApp {...routeProps}
                 onTaskDelete={this.onTaskDelete}
                 onToggleEdit={this.onToggleEdit}
