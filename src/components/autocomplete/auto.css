@@ -3,4 +3,14 @@
   border: 1px solid silver;
   min-width: 300px;
   overflow-y: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.autocomplete {
+  list-style-type: none;
+}
+
+.autocomplete li {
+  padding: 3px;
 }
