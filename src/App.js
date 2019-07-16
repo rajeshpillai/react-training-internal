@@ -81,7 +81,7 @@ class App extends React.Component {
     return (
       <Router>
         <ThemeProvider>
-          <nav class="top-nav">
+          <nav className="top-nav">
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
           </nav>
