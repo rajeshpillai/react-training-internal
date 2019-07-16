@@ -80,14 +80,12 @@ class App extends React.Component {
   render() {
     return (
       <ThemeProvider>
-        <div className="App">
-          <header className="App-header">
-            <TrackerApp
-              onTaskDelete={this.onTaskDelete}
-              onToggleEdit={this.onToggleEdit}
-              onTaskUpdate={this.onTaskUpdate}
-              onTaskAdd={this.onTaskAdd} tasks={this.state.tasks} />
-          </header>
+        <div className="app">
+          <TrackerApp
+            onTaskDelete={this.onTaskDelete}
+            onToggleEdit={this.onToggleEdit}
+            onTaskUpdate={this.onTaskUpdate}
+            onTaskAdd={this.onTaskAdd} tasks={this.state.tasks} />
         </div>
       </ThemeProvider>
     );

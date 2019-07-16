@@ -58,7 +58,7 @@ export default class TrackerApp extends React.Component {
     let { tasks, onTaskDelete, onToggleEdit } = this.props;
 
     return (
-      <div>
+      <div className={this.context}>
         <ThemeConsumer>
           {props => {
             return <h2>{props}</h2>
@@ -94,7 +94,6 @@ export default class TrackerApp extends React.Component {
             })
           }
         </ol>
-
       </div>
     );
   }
