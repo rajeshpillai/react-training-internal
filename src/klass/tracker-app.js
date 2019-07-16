@@ -16,7 +16,7 @@ export default class TrackerApp extends React.Component {
   onTitleChange(id, e) {
     console.log(id, e);
     if (e.which == 13) {
-      this.props.onTaskUpdate({ id: id, title: e.target.value});
+      this.props.onTaskUpdate({ id: id, title: e.target.value });
     } else if (e.which == 27) {  // ESC
       alert('cancel');
       this.props.onToggleEdit(id);
@@ -28,7 +28,7 @@ export default class TrackerApp extends React.Component {
       showTaskForm: !this.state.showTaskForm
     })
   }
-  
+
 
   onSubmit(e) {
     e.preventDefault();
@@ -38,8 +38,13 @@ export default class TrackerApp extends React.Component {
     }
   }
 
+  throwError() {
+    alert("An error will occur now!");
+    throw new Error("Error: Simulated");
+  }
+
   render() {
-    let { tasks, onTaskDelete,onToggleEdit } = this.props;
+    let { tasks, onTaskDelete, onToggleEdit } = this.props;
 
     return (
       <div>
@@ -59,17 +64,18 @@ export default class TrackerApp extends React.Component {
           {
             tasks.map((t, index) => {
               return (
-                <li>
-                  
+                <li key={t.id}>
+
                   {!t.edit && t.title}
                   {t.edit &&
-                    <input defaultValue={t.title} 
-                      onKeyDown={this.onTitleChange.bind(null,t.id)}
-                      onChange={this.onTitleChange.bind(null,t.id)}></input>
+                    <input defaultValue={t.title}
+                      onKeyDown={this.onTitleChange.bind(null, t.id)}
+                      onChange={this.onTitleChange.bind(null, t.id)}></input>
                   }
-                  
+
                   <button onClick={onToggleEdit.bind(null, t.id)}>edit</button>
                   <button onClick={onTaskDelete.bind(null, t.id)}>X</button>
+
                 </li>
               )
             })

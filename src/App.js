@@ -19,6 +19,7 @@ class App extends React.Component {
     this.onTaskUpdate = this.onTaskUpdate.bind(this);
   }
 
+
   onToggleEdit(id) {
     let tasks = this.state.tasks.map((t) => {
       if (t.id == id) {
