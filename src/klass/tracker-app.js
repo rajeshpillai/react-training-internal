@@ -1,8 +1,11 @@
 import React from 'react';
 import TaskForm from './task-form';
-import { ThemeConsumer } from '../context/theme-context';
+import ThemeContext, { ThemeConsumer } from '../context/theme-context';
 
 export default class TrackerApp extends React.Component {
+  // Access context outside render
+  static contextType = ThemeContext;
+
   constructor() {
     super();
     this.inputTitle = React.createRef();
@@ -43,6 +46,12 @@ export default class TrackerApp extends React.Component {
   throwError() {
     alert("An error will occur now!");
     throw new Error("Error: Simulated");
+  }
+
+  componentDidMount() {
+    // Access context outside render
+    const theme = this.context;
+    console.log(theme);
   }
 
   render() {
