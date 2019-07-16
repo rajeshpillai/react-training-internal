@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
 import TrackerApp from './klass/tracker-app';
+import ThemeProvider from './context/context-provider';
+
+
 class App extends React.Component {
   state = {
     tasks: [
@@ -76,15 +79,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <TrackerApp
-            onTaskDelete={this.onTaskDelete}
-            onToggleEdit={this.onToggleEdit}
-            onTaskUpdate={this.onTaskUpdate}
-            onTaskAdd={this.onTaskAdd} tasks={this.state.tasks} />
-        </header>
-      </div>
+      <ThemeProvider>
+        <div className="App">
+          <header className="App-header">
+            <TrackerApp
+              onTaskDelete={this.onTaskDelete}
+              onToggleEdit={this.onToggleEdit}
+              onTaskUpdate={this.onTaskUpdate}
+              onTaskAdd={this.onTaskAdd} tasks={this.state.tasks} />
+          </header>
+        </div>
+      </ThemeProvider>
     );
   }
 }

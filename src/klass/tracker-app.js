@@ -1,5 +1,6 @@
 import React from 'react';
 import TaskForm from './task-form';
+import { ThemeConsumer } from '../context/theme-context';
 
 export default class TrackerApp extends React.Component {
   constructor() {
@@ -49,6 +50,11 @@ export default class TrackerApp extends React.Component {
 
     return (
       <div>
+        <ThemeConsumer>
+          {props => {
+            return <h2>{props}</h2>
+          }}
+        </ThemeConsumer>
         <h2>Tracker App
           <button className="btn primary" onClick={this.toggleTaskForm}>+</button>
         </h2>
