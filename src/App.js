@@ -1,13 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import TrackerApp from './klass/tracker-app';
-import AboutUs from './components/aboutus';
-import AutoComplete from './components/autocomplete';
+import AboutUs from './pages/aboutus';
 import ThemeProvider from './context/context-provider';
 import Expandable from './components/expandable';
 import ExpandableListPage from './pages/expandable-list-page';
+import AutoCompletePage from './pages/autocomplete-page';
 
-import countries from './data/countries';
 import './App.css';
 
 class App extends React.Component {
@@ -25,7 +24,6 @@ class App extends React.Component {
     this.onTaskDelete = this.onTaskDelete.bind(this);
     this.onToggleEdit = this.onToggleEdit.bind(this);
     this.onTaskUpdate = this.onTaskUpdate.bind(this);
-    this.onCountrySelected = this.onCountrySelected.bind(this);
     this.onExpand = this.onExpand.bind(this);
   }
 
@@ -82,9 +80,6 @@ class App extends React.Component {
     })
   }
 
-  onCountrySelected(country) {
-    console.log(`Selected country is ${country}`);
-  }
 
   onExpand(value) {
     alert(value);
@@ -96,16 +91,13 @@ class App extends React.Component {
         <ThemeProvider>
           <nav className="top-nav">
             <Link to="/">Home</Link>
+            <Link to="/autocomplete">AutoComplete Demo</Link>
             <Link to="/expandlist">Expandable List</Link>
+
             <Link to="/about">About</Link>
           </nav>
           <Route exact path="/" render={routeProps => (
             <div className="app">
-              Where are you from?
-              <AutoComplete
-                onItemSelected={this.onCountrySelected}
-                data={countries} />
-              <hr />
 
               <Expandable onExpand={this.onExpand}>
                 <Expandable.Header>Expand / Collapse</Expandable.Header>
@@ -122,6 +114,7 @@ class App extends React.Component {
 
           <Route path="/about/" exact component={AboutUs} />
           <Route path="/expandlist/" exact component={ExpandableListPage} />
+          <Route path="/autocomplete/" exact component={AutoCompletePage} />
 
         </ThemeProvider>
       </Router>
