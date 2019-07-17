@@ -9,8 +9,7 @@
 }
 
 .header span {
-  position: relative;
-  right: 0;
+  display: inline-block;
 }
 .body {
   margin: 0;

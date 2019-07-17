@@ -5,10 +5,10 @@ import Icon from './icon';
 export default function Header({ children }) {
   const { toggle } = useContext(ExpandableContext);
   return (
-    <h3
+    <div
       className="header"
       onClick={toggle}>{children}
       <Icon />
-    </h3>
+    </div>
   );
 }

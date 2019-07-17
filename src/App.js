@@ -25,6 +25,7 @@ class App extends React.Component {
     this.onToggleEdit = this.onToggleEdit.bind(this);
     this.onTaskUpdate = this.onTaskUpdate.bind(this);
     this.onCountrySelected = this.onCountrySelected.bind(this);
+    this.onExpand = this.onExpand.bind(this);
   }
 
 
@@ -84,6 +85,9 @@ class App extends React.Component {
     console.log(`Selected country is ${country}`);
   }
 
+  onExpand(value) {
+    alert(value);
+  }
 
   render() {
     return (
@@ -101,9 +105,8 @@ class App extends React.Component {
                 data={countries} />
               <hr />
 
-              <Expandable>
+              <Expandable onExpand={this.onExpand}>
                 <Expandable.Header>Expand / Collapse</Expandable.Header>
-               
                 <Expandable.Body>Content goes here</Expandable.Body>
               </Expandable>
 
