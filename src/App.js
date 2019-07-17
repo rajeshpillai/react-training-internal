@@ -6,6 +6,7 @@ import ThemeProvider from './context/context-provider';
 import Expandable from './components/expandable';
 import ExpandableListPage from './pages/expandable-list-page';
 import AutoCompletePage from './pages/autocomplete-page';
+import Menu from './components/menu';
 
 import './App.css';
 
@@ -89,13 +90,7 @@ class App extends React.Component {
     return (
       <Router>
         <ThemeProvider>
-          <nav className="top-nav">
-            <Link to="/">Home</Link>
-            <Link to="/autocomplete">AutoComplete Demo</Link>
-            <Link to="/expandlist">Expandable List</Link>
-
-            <Link to="/about">About</Link>
-          </nav>
+          <Menu />
           <Route exact path="/" render={routeProps => (
             <div className="app">
 
