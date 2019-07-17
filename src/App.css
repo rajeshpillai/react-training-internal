@@ -20,16 +20,17 @@ body {
   padding: 10px;
 }
 
-.task-form {
-  width: 200px;
-  border: 1px solid lightgray;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-}
-
 .btn {
   margin: 10px;
   min-width:10px;
   height: 25px;
+}
+
+button {
+  border: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0px;
+  background-color: #FFBF00;
+  margin:3px;
 }

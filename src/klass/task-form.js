@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 
 const TaskForm = React.forwardRef((props, ref) => {
   return (
