@@ -83,7 +83,7 @@ class App extends React.Component {
 
 
   onExpand(value) {
-    alert(value);
+    console.log(`expanded ${value}`);
   }
 
   render() {
@@ -98,6 +98,7 @@ class App extends React.Component {
                 <Expandable.Header>Expand / Collapse</Expandable.Header>
                 <Expandable.Body>Content goes here</Expandable.Body>
               </Expandable>
+              <br />
 
               <TrackerApp {...routeProps}
                 onTaskDelete={this.onTaskDelete}
