@@ -18,7 +18,7 @@ export default function Expandable({ children, onExpand }) {
 
   useEffect(() => {
     if (!componentJustMounted.current) {
-      onExpand(expanded);
+      if (onExpand) onExpand(expanded);
     }
     componentJustMounted.current = false;
   }, [expanded, onExpand])

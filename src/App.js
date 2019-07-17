@@ -5,6 +5,7 @@ import AboutUs from './components/aboutus';
 import AutoComplete from './components/autocomplete';
 import ThemeProvider from './context/context-provider';
 import Expandable from './components/expandable';
+import ExpandableListPage from './pages/expandable-list-page';
 
 import countries from './data/countries';
 import './App.css';
@@ -95,6 +96,7 @@ class App extends React.Component {
         <ThemeProvider>
           <nav className="top-nav">
             <Link to="/">Home</Link>
+            <Link to="/expandlist">Expandable List</Link>
             <Link to="/about">About</Link>
           </nav>
           <Route exact path="/" render={routeProps => (
@@ -119,6 +121,7 @@ class App extends React.Component {
           )} />
 
           <Route path="/about/" exact component={AboutUs} />
+          <Route path="/expandlist/" exact component={ExpandableListPage} />
 
         </ThemeProvider>
       </Router>
