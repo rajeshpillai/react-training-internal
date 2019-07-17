@@ -1,0 +1,19 @@
+.expandable {
+
+}
+
+.header{
+  padding: 5px;
+  background-color: #58B6DC;
+  margin: 0;
+}
+
+.header span {
+  position: relative;
+  right: 0;
+}
+.body {
+  margin: 0;
+  border: 1px solid #58B6DC;
+  padding: 5px;
+}

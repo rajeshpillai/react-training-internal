@@ -1,11 +1,13 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import TrackerApp from './klass/tracker-app';
 import AboutUs from './components/aboutus';
 import AutoComplete from './components/autocomplete';
 import ThemeProvider from './context/context-provider';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Expandable from './components/expandable';
+
 import countries from './data/countries';
+import './App.css';
 
 class App extends React.Component {
   state = {
@@ -98,6 +100,13 @@ class App extends React.Component {
                 onItemSelected={this.onCountrySelected}
                 data={countries} />
               <hr />
+
+              <Expandable>
+                <Expandable.Header>Expand / Collapse</Expandable.Header>
+               
+                <Expandable.Body>Content goes here</Expandable.Body>
+              </Expandable>
+
               <TrackerApp {...routeProps}
                 onTaskDelete={this.onTaskDelete}
                 onToggleEdit={this.onToggleEdit}
