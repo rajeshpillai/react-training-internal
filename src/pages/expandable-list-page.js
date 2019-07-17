@@ -8,8 +8,15 @@ const data = [
   { id: 4, title: "List 4", body: "Content 4 goes here" },
 
 ];
+
+const style = {
+  margin: 10,
+}
+
 export default function ExpandableListPage(props) {
   return (
-    <ExpandableList data={data} />
+    <div style={style} >
+      <ExpandableList data={data} />
+    </div>
   );
 }

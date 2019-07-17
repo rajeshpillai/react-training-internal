@@ -2,6 +2,10 @@ import React from 'react';
 import AutoComplete from '../components/autocomplete';
 import countries from '../data/countries';
 
+const style = {
+  margin: 10,
+}
+
 
 const AutoCompletePage = (props) => {
 
@@ -10,7 +14,7 @@ const AutoCompletePage = (props) => {
   }
 
   return (
-    <div>
+    <div style={style}>
       Where are you from?
     <AutoComplete
         onItemSelected={onCountrySelected}
